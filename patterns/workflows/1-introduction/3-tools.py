@@ -18,6 +18,7 @@ docs: https://platform.openai.com/docs/guides/function-calling
 
 def get_weather(latitude, longitude):
     """This is a publically available API that returns the weather for a given location."""
+    print(f"Getting weather for {latitude}, {longitude} from external API")
     response = requests.get(
         f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
     )
@@ -114,5 +115,5 @@ completion_2 = client.beta.chat.completions.parse(
 # --------------------------------------------------------------
 
 final_response = completion_2.choices[0].message.parsed
-final_response.temperature
-final_response.response
+print(final_response.temperature)
+print(final_response.response)

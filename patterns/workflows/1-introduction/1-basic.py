@@ -4,6 +4,10 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# print("** API Key **")
+# print(client.api_key)
+# print("** Model **")
+# print(client.models.list())
 
 completion = client.chat.completions.create(
     model="gpt-4o",
