@@ -86,11 +86,17 @@ async def validate_request(user_input: str) -> bool:
         validate_calendar_request(user_input), check_security(user_input)
     )
 
+    print(f"Calendar check: {calendar_check}")
+    print(f"Security check: {security_check}")  
+
     is_valid = (
         calendar_check.is_calendar_request
         and calendar_check.confidence_score > 0.7
         and security_check.is_safe
     )
+
+    print(f"Calendar check: {calendar_check.is_calendar_request}")
+    print(f"Security check: {security_check.is_safe}")
 
     if not is_valid:
         logger.warning(
